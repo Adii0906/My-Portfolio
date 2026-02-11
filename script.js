@@ -3,7 +3,8 @@
 // ===========================
 
 const phrases = [
-  "AI Application Developer",
+  "AI Developer",
+  "Open-Source Contributor",
   "LLM Engineer",
   "Full Stack Developer",
   "Backend Specialist"
@@ -16,7 +17,7 @@ const typingElement = document.getElementById("typing-text");
 
 function typeEffect() {
   const currentPhrase = phrases[phraseIndex];
-  
+
   if (isDeleting) {
     typingElement.textContent = currentPhrase.substring(0, charIndex - 1);
     charIndex--;
@@ -53,13 +54,13 @@ let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
   const currentScroll = window.pageYOffset;
-  
+
   if (currentScroll > 100) {
     navbar.classList.add('scrolled');
   } else {
     navbar.classList.remove('scrolled');
   }
-  
+
   lastScroll = currentScroll;
 });
 
@@ -71,14 +72,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute('href'));
-    
+
     if (target) {
       const offsetTop = target.offsetTop - 80;
       window.scrollTo({
         top: offsetTop,
         behavior: 'smooth'
       });
-      
+
       // Update active nav link
       document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.remove('active');
@@ -101,7 +102,7 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('active');
-      
+
       // Add stagger animation to children if they exist
       const children = entry.target.querySelectorAll('.work-card, .skill-category, .highlight-item');
       children.forEach((child, index) => {
@@ -109,7 +110,7 @@ const observer = new IntersectionObserver((entries) => {
           child.style.opacity = '0';
           child.style.transform = 'translateY(30px)';
           child.style.transition = 'all 0.6s ease';
-          
+
           setTimeout(() => {
             child.style.opacity = '1';
             child.style.transform = 'translateY(0)';
@@ -134,12 +135,12 @@ const sections = document.querySelectorAll('section[id]');
 
 function updateActiveNav() {
   const scrollY = window.pageYOffset;
-  
+
   sections.forEach(section => {
     const sectionHeight = section.offsetHeight;
     const sectionTop = section.offsetTop - 150;
     const sectionId = section.getAttribute('id');
-    
+
     if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
       document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.remove('active');
@@ -162,7 +163,7 @@ const techItems = document.querySelectorAll('.tech-item');
 techItems.forEach((item, index) => {
   item.style.opacity = '0';
   item.style.transform = 'translateY(20px)';
-  
+
   setTimeout(() => {
     item.style.transition = 'all 0.5s ease';
     item.style.opacity = '1';
@@ -198,14 +199,14 @@ class Particle {
     this.speedY = Math.random() * 2 - 1;
     this.life = 30;
   }
-  
+
   update() {
     this.x += this.speedX;
     this.y += this.speedY;
     this.life--;
     this.size *= 0.96;
   }
-  
+
   draw() {
     ctx.fillStyle = `rgba(0, 255, 136, ${this.life / 30})`;
     ctx.beginPath();
@@ -222,29 +223,29 @@ let lastMouseY = 0;
 document.addEventListener('mousemove', (e) => {
   mouseX = e.clientX;
   mouseY = e.clientY;
-  
+
   const distance = Math.hypot(mouseX - lastMouseX, mouseY - lastMouseY);
-  
+
   if (distance > 10 && particles.length < maxParticles) {
     particles.push(new Particle(mouseX, mouseY));
   }
-  
+
   lastMouseX = mouseX;
   lastMouseY = mouseY;
 });
 
 function animateParticles() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  
+
   for (let i = particles.length - 1; i >= 0; i--) {
     particles[i].update();
     particles[i].draw();
-    
+
     if (particles[i].life <= 0) {
       particles.splice(i, 1);
     }
   }
-  
+
   requestAnimationFrame(animateParticles);
 }
 
@@ -261,7 +262,7 @@ window.addEventListener('resize', () => {
 
 window.addEventListener('load', () => {
   document.body.classList.add('loaded');
-  
+
   // Trigger initial animations
   setTimeout(() => {
     const heroElements = document.querySelectorAll('.greeting, .hero-name, .hero-title, .hero-description, .hero-cta, .tech-stack');
