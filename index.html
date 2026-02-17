@@ -1,394 +1,647 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aditya | Student</title>
+  <title>Aditya | AI Developer</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;600&family=Syne:wght@400;600;700;800&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="nav-container">
+  <!-- ═══════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
       <div class="logo">
-        <span class="logo-bracket">&lt;</span>
-        <span class="logo-text">ADITYA</span>
-        <span class="logo-bracket">/&gt;</span>
+        <span class="bracket">&lt;</span>ADITYA<span class="bracket">/&gt;</span>
       </div>
 
-      <div class="nav-menu">
-        <a href="#home" class="nav-link active">Home</a>
-        <a href="#about" class="nav-link">About</a>
-        <a href="#work" class="nav-link">Work</a>
-        <a href="#skills" class="nav-link">Skills</a>
-        <a href="#contact" class="nav-link">Contact</a>
-        <a href="resume.pdf" target="_blank" class="nav-btn">Resume</a>
+      <div class="nav-links">
+        <a href="#home" class="active">~/home</a>
+        <a href="#about">~/about</a>
+        <a href="#work">~/work</a>
+        <a href="#skills">~/skills</a>
+        <a href="#contact">~/contact</a>
+        <a href="mailto:your.email@example.com" class="hire-btn">
+          <i class="fas fa-circle-dot"></i> hire me
+        </a>
       </div>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section id="home" class="hero">
-    <div class="hero-content">
-      <div class="hero-text">
-        <h1 class="hero-name">
-          Hi, I'm Aditya
-        </h1>
 
-        <div class="hero-title">
-          <span class="title-text" id="typing-text"></span>
-          <span class="cursor-blink">|</span>
+  <!-- ═══════════════════════════════════════
+       HERO SECTION
+  ═══════════════════════════════════════ -->
+  <section id="home">
+    <div class="hero-inner">
+
+      <div class="hero-text">
+        <!-- Terminal window header -->
+        <div class="terminal-bar">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green-dot"></span>
+          <span class="terminal-title">aditya@portfolio:~$</span>
         </div>
 
-        <p class="hero-description">
-          Building intelligent AI-powered applications with Python, LLMs,
-          and modern frameworks. Transforming ideas into scalable solutions.
+        <h1 class="hero-name">Hi, I'm <em class="name-hi">Aditya</em></h1>
+
+        <div class="hero-role">
+          <span class="prompt">❯</span>
+          <span id="typed"></span><span class="cursor">▋</span>
+        </div>
+
+        <p class="hero-desc">
+          Building intelligent AI-powered apps with Python, LLMs & modern frameworks.
+          Turning ideas into production-grade solutions — one commit at a time.
         </p>
 
-        <div class="hero-cta">
-          <a href="#work" class="btn btn-primary">
-            <span>View My Work</span>
-            <i class="fas fa-arrow-right"></i>
+        <div class="hero-btns">
+          <a href="#work" class="btn-primary">
+            <i class="fas fa-folder-open"></i> View Work
           </a>
-          <a href="#contact" class="btn btn-secondary">
-            <span>Get In Touch</span>
+          <a href="#contact" class="btn-outline">
+            <i class="fas fa-paper-plane"></i> Get In Touch
           </a>
         </div>
 
-        <!-- Tech Stack Ticker -->
-        <div class="tech-stack">
-          <div class="tech-item">Python</div>
-          <div class="tech-item">LangChain</div>
-          <div class="tech-item">FastAPI</div>
-          <div class="tech-item">React</div>
-          <div class="tech-item">Docker</div>
-          <div class="tech-item">LLMs</div>
-          <div class="tech-item">RAG</div>
+        <!-- Tech chips -->
+        <div class="tech-chips">
+          <span class="chip">Python</span>
+          <span class="chip">LangChain</span>
+          <span class="chip">FastAPI</span>
+          <span class="chip">React</span>
+          <span class="chip">Docker</span>
+          <span class="chip">LLMs</span>
+          <span class="chip">RAG</span>
         </div>
       </div>
 
-      <!-- Profile Image -->
-      <div class="hero-image">
-        <div class="image-container">
-          <img src="profile.png" alt="Aditya - AI Developer">
-          <div class="image-glow"></div>
+      <!-- Profile image -->
+      <div class="hero-img-wrap">
+        <div class="img-frame">
+          <img src="profile.png" alt="Aditya — AI Developer" />
+        </div>
+        <!-- floating status badge -->
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          Available for work
         </div>
       </div>
+
     </div>
   </section>
 
-  <!-- About Section -->
-  <section id="about" class="section about-section">
-    <div class="section-container">
-      <div class="section-header">
-        <span class="section-number">01</span>
-        <h2 class="section-title">About Me</h2>
+
+  <!-- ═══════════════════════════════════════
+       ABOUT SECTION
+  ═══════════════════════════════════════ -->
+  <section id="about" class="section">
+    <div class="section-inner reveal">
+
+      <div class="sec-head">
+        <span class="sec-num">01</span>
+        <h2 class="sec-title">About Me</h2>
+        <div class="sec-line"></div>
       </div>
 
-      <div class="about-content">
-        <div class="about-text">
+      <div class="about-grid">
+
+        <!-- Left: bio + education + open source -->
+        <div>
           <p class="about-intro">
-            I'm an <strong>AI-focused developer</strong> passionate about building
+            I'm an <strong>AI-focused developer</strong> who loves building
             intelligent systems that solve real-world problems.
           </p>
-
-          <p>
-            My expertise lies in developing <strong>LLM-powered applications</strong>,
-            implementing <strong>RAG pipelines</strong>, and creating
-            <strong>agent-based workflows</strong> that bring AI capabilities
-            to practical use cases.
+          <p class="about-p">
+            My expertise spans <strong>LLM-powered apps</strong>, <strong>RAG pipelines</strong>,
+            and <strong>agent-based workflows</strong>. I combine strong backend skills with deep
+            knowledge of modern AI frameworks.
           </p>
 
-          <p>
-            I combine strong backend engineering skills with deep knowledge of
-            modern AI frameworks to craft scalable, production-ready solutions.
-          </p>
-
-          <div class="about-highlights">
-            <div class="highlight-item">
-              <div class="highlight-icon">
-                <i class="fas fa-robot"></i>
+          <!-- Education -->
+          <div class="sub-section">
+            <h3 class="sub-title"><i class="fas fa-graduation-cap"></i> Education</h3>
+            <div class="edu-list">
+              <div class="edu-card">
+                <div class="edu-degree">B.Tech — Artificial Intelligence & Data Science</div>
+                <div class="edu-meta">Currently Pursuing &nbsp;·&nbsp; 2024 — Present</div>
               </div>
-              <div class="highlight-content">
-                <h4>AI Development</h4>
-                <p>Building intelligent agents and LLM applications</p>
-              </div>
-            </div>
-
-            <div class="highlight-item">
-              <div class="highlight-icon">
-                <i class="fas fa-code"></i>
-              </div>
-              <div class="highlight-content">
-                <h4>Full Stack</h4>
-                <p>Modern web applications with React & Python</p>
-              </div>
-            </div>
-
-            <div class="highlight-item">
-              <div class="highlight-icon">
-                <i class="fas fa-rocket"></i>
-              </div>
-              <div class="highlight-content">
-                <h4>Scalable Systems</h4>
-                <p>Production-grade architecture & deployment</p>
+              <div class="edu-card">
+                <div class="edu-degree">Diploma — Computer Science Engineering</div>
+                <div class="edu-meta">Completed</div>
               </div>
             </div>
           </div>
 
-          <div class="open-source-section">
-            <h3 class="subsection-title">
-              <i class="fab fa-github"></i> Open Source Contributions
-            </h3>
-            <div class="contributions-grid">
-              <div class="contribution-badge">
-                <i class="fas fa-code-branch"></i>
-                <span>Open Source Contributor</span>
-              </div>
-              <div class="contribution-badge featured">
-                <i class="fas fa-award"></i>
-                <span>Hacktoberfest Super Contributor</span>
-              </div>
-              <div class="contribution-badge">
-                <i class="fas fa-chalkboard-teacher"></i>
-                <span>Mentor - Social Winter of Code</span>
-              </div>
-              <div class="contribution-badge">
-                <i class="fas fa-users"></i>
-                <span>Mentor - Apertre 3.0</span>
-              </div>
+          <!-- Open Source -->
+          <div class="sub-section">
+            <h3 class="sub-title"><i class="fab fa-github"></i> Open Source</h3>
+            <div class="os-grid">
+              <div class="os-badge"><i class="fas fa-code-branch"></i> Open Source Contributor</div>
+              <div class="os-badge featured"><i class="fas fa-award"></i> Hacktoberfest Super Contributor</div>
+              <div class="os-badge"><i class="fas fa-chalkboard-teacher"></i> Mentor — Social Winter of Code</div>
+              <div class="os-badge"><i class="fas fa-users"></i> Mentor — Apertre 3.0</div>
             </div>
           </div>
         </div>
+
+        <!-- Right: highlight cards -->
+        <div class="highlights">
+          <div class="hl-card">
+            <div class="hl-icon"><i class="fas fa-robot"></i></div>
+            <div>
+              <div class="hl-title">AI Development</div>
+              <div class="hl-desc">Building intelligent agents and LLM apps from scratch</div>
+            </div>
+          </div>
+          <div class="hl-card">
+            <div class="hl-icon"><i class="fas fa-code"></i></div>
+            <div>
+              <div class="hl-title">Full Stack</div>
+              <div class="hl-desc">Modern web apps with React & Python backend</div>
+            </div>
+          </div>
+          <div class="hl-card">
+            <div class="hl-icon"><i class="fas fa-rocket"></i></div>
+            <div>
+              <div class="hl-title">Scalable Systems</div>
+              <div class="hl-desc">Production-grade architecture, Docker & CI/CD</div>
+            </div>
+          </div>
+          <div class="hl-card">
+            <div class="hl-icon"><i class="fas fa-puzzle-piece"></i></div>
+            <div>
+              <div class="hl-title">Browser Extensions</div>
+              <div class="hl-desc">Chrome extensions with AI & sentiment capabilities</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Latest Work Section -->
-  <section id="work" class="section work-section">
-    <div class="section-container">
-      <div class="section-header">
-        <span class="section-number">02</span>
-        <h2 class="section-title">Latest Work</h2>
+
+  <!-- ═══════════════════════════════════════
+       PROJECTS SECTION
+       ─────────────────────────────────────
+       HOW TO ADD A NEW PROJECT:
+       1. Copy one of the <article class="proj-card"> blocks below
+       2. Paste it inside the correct <div class="proj-grid"> group
+       3. Update: proj-icon class, proj-tags, title, description,
+                  data-repo="YourUsername/repo-name", and the GitHub href
+       4. Save — the star count will auto-fetch from GitHub API
+
+       HOW TO REMOVE A PROJECT:
+       1. Find the <article class="proj-card"> you want to remove
+       2. Delete the entire block from opening <article> to closing </article>
+
+       PROJECT GROUPS:
+       - #ai-projects    → AI / LLM projects
+       - #ext-projects   → Chrome Extension projects
+       - #oss-projects   → Open Source contribution projects
+       - #side-projects  → Fun / side projects
+  ═══════════════════════════════════════ -->
+  <section id="work" class="section alt-bg">
+    <div class="section-inner">
+
+      <div class="sec-head reveal">
+        <span class="sec-num">02</span>
+        <h2 class="sec-title">Latest Work</h2>
+        <div class="sec-line"></div>
       </div>
 
-      <div class="work-grid">
-        <!-- Project 1 -->
-        <article class="work-card">
-          <div class="work-card-header">
-            <div class="work-icon">
-              <i class="fas fa-brain"></i>
+
+      <!-- ── AI PROJECTS ────────────────────── -->
+      <div class="proj-group reveal" id="ai-projects">
+        <div class="group-label"><i class="fas fa-brain"></i> AI Projects</div>
+        <div class="proj-grid">
+
+          <!-- PROJECT: Local Agent CLI -->
+          <article class="proj-card">
+            <div class="proj-top">
+              <div class="proj-icon"><i class="fas fa-terminal"></i></div>
+              <div class="proj-tags">
+                <span class="ptag">Python</span>
+                <span class="ptag">Agents</span>
+                <span class="ptag">Ollama</span>
+              </div>
             </div>
-            <div class="work-tags">
-              <span class="tag">LLM</span>
-              <span class="tag">RAG</span>
-              <span class="tag">Python</span>
+            <h3 class="proj-title">Local Agent CLI</h3>
+            <p class="proj-desc">
+              Command-line AI coding assistant powered by local LLMs via Ollama.
+              Provides code suggestions, debugging help and automated task execution —
+              all running locally on your machine.
+            </p>
+            <div class="proj-footer">
+              <div class="stars-badge">
+                <i class="fas fa-star"></i>
+                <span class="star-count" data-repo="Adii0906/Local-Agent-CLI">—</span>
+              </div>
+              <a href="https://github.com/Adii0906/Local-Agent-CLI" target="_blank" class="proj-link">
+                GitHub <i class="fab fa-github"></i>
+              </a>
             </div>
-          </div>
+          </article>
 
-          <h3 class="work-title">Research Buddy</h3>
-          <p class="work-description">
-            AI-powered research assistant that searches the web,
-            synthesizes information, and provides accurate citations.
-            Built with LangChain and advanced RAG techniques.
-          </p>
-
-          <div class="work-footer">
-            <a href="#" class="work-link">
-              View Project <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </article>
-
-        <!-- Project 2 -->
-        <article class="work-card">
-          <div class="work-card-header">
-            <div class="work-icon">
-              <i class="fas fa-book-open"></i>
+          <!-- PROJECT: ContextGen AI -->
+          <article class="proj-card">
+            <div class="proj-top">
+              <div class="proj-icon"><i class="fas fa-database"></i></div>
+              <div class="proj-tags">
+                <span class="ptag">RAG</span>
+                <span class="ptag">LangChain</span>
+                <span class="ptag">LLM</span>
+              </div>
             </div>
-            <div class="work-tags">
-              <span class="tag">NLP</span>
-              <span class="tag">LLM</span>
-              <span class="tag">Streamlit</span>
+            <h3 class="proj-title">ContextGen AI</h3>
+            <p class="proj-desc">
+              AI-powered context generation engine using RAG pipelines.
+              Synthesizes information from multiple sources and provides
+              grounded, citation-backed responses.
+            </p>
+            <div class="proj-footer">
+              <div class="stars-badge">
+                <i class="fas fa-star"></i>
+                <span class="star-count" data-repo="Adii0906/ContextGen-AI">—</span>
+              </div>
+              <a href="https://github.com/Adii0906/ContextGen-AI" target="_blank" class="proj-link">
+                GitHub <i class="fab fa-github"></i>
+              </a>
             </div>
-          </div>
+          </article>
 
-          <h3 class="work-title">Gita Wisdom Chatbot</h3>
-          <p class="work-description">
-            Interactive chatbot providing guidance based on Bhagavad Gita
-            teachings. Features semantic search and context-aware responses
-            for problem-solving.
-          </p>
-
-          <div class="work-footer">
-            <a href="#" class="work-link">
-              View Project <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </article>
-
-        <!-- Project 3 -->
-        <article class="work-card">
-          <div class="work-card-header">
-            <div class="work-icon">
-              <i class="fas fa-terminal"></i>
+          <!-- ✦ ADD NEW AI PROJECT HERE ✦
+          <article class="proj-card">
+            <div class="proj-top">
+              <div class="proj-icon"><i class="fas fa-YOUR-ICON"></i></div>
+              <div class="proj-tags">
+                <span class="ptag">Tag1</span>
+                <span class="ptag">Tag2</span>
+              </div>
             </div>
-            <div class="work-tags">
-              <span class="tag">Python</span>
-              <span class="tag">Agents</span>
-              <span class="tag">CLI</span>
+            <h3 class="proj-title">Project Title</h3>
+            <p class="proj-desc">
+              Short description of your project. Keep it 2-3 sentences.
+            </p>
+            <div class="proj-footer">
+              <div class="stars-badge">
+                <i class="fas fa-star"></i>
+                <span class="star-count" data-repo="Adii0906/REPO-NAME">-</span>
+              </div>
+              <a href="https://github.com/Adii0906/REPO-NAME" target="_blank" class="proj-link">
+                GitHub <i class="fab fa-github"></i>
+              </a>
             </div>
-          </div>
+          </article>
+          -->
 
-          <h3 class="work-title">Terminal AI Agent</h3>
-          <p class="work-description">
-            Command-line coding assistant powered by local LLMs.
-            Provides intelligent code suggestions, debugging help,
-            and automated task execution.
-          </p>
-
-          <div class="work-footer">
-            <a href="#" class="work-link">
-              View Project <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </article>
+        </div>
       </div>
+
+
+      <!-- ── EXTENSION PROJECTS ─────────────── -->
+      <div class="proj-group reveal" id="ext-projects">
+        <div class="group-label"><i class="fas fa-puzzle-piece"></i> Extension Projects</div>
+        <div class="proj-grid">
+
+          <!-- PROJECT: SentiFlags -->
+          <article class="proj-card">
+            <div class="proj-top">
+              <div class="proj-icon"><i class="fas fa-flag"></i></div>
+              <div class="proj-tags">
+                <span class="ptag">NLP</span>
+                <span class="ptag">Chrome</span>
+                <span class="ptag">Sentiment</span>
+              </div>
+            </div>
+            <h3 class="proj-title">SentiFlags</h3>
+            <p class="proj-desc">
+              Browser extension performing real-time sentiment analysis on web content.
+              Flags emotionally charged or manipulative language, helping users
+              consume media more critically.
+            </p>
+            <div class="proj-footer">
+              <div class="stars-badge">
+                <i class="fas fa-star"></i>
+                <span class="star-count" data-repo="Adii0906/SentiFlags">—</span>
+              </div>
+              <a href="https://github.com/Adii0906/SentiFlags" target="_blank" class="proj-link">
+                GitHub <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- PROJECT: ReelAware -->
+          <article class="proj-card">
+            <div class="proj-top">
+              <div class="proj-icon"><i class="fas fa-film"></i></div>
+              <div class="proj-tags">
+                <span class="ptag">Chrome</span>
+                <span class="ptag">Wellness</span>
+                <span class="ptag">UX</span>
+              </div>
+            </div>
+            <h3 class="proj-title">ReelAware Extension</h3>
+            <p class="proj-desc">
+              Mindful browsing extension that tracks time on short-form video,
+              provides usage insights, and nudges users toward more intentional
+              social media habits.
+            </p>
+            <div class="proj-footer">
+              <div class="stars-badge">
+                <i class="fas fa-star"></i>
+                <span class="star-count" data-repo="Adii0906/reelaware-extension">—</span>
+              </div>
+              <a href="https://github.com/Adii0906/reelaware-extension" target="_blank" class="proj-link">
+                GitHub <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- ✦ ADD NEW EXTENSION PROJECT HERE ✦ -->
+
+        </div>
+      </div>
+
+
+      <!-- ── OPEN SOURCE PROJECTS ───────────── -->
+      <div class="proj-group reveal" id="oss-projects">
+        <div class="group-label"><i class="fab fa-github"></i> Open Source Projects</div>
+        <div class="proj-grid">
+
+          <!-- PROJECT: Hacktoberfest Kickstarter -->
+          <article class="proj-card">
+            <div class="proj-top">
+              <div class="proj-icon"><i class="fas fa-leaf"></i></div>
+              <div class="proj-tags">
+                <span class="ptag">OSS</span>
+                <span class="ptag">Community</span>
+              </div>
+            </div>
+            <h3 class="proj-title">Hacktoberfest Kickstarter</h3>
+            <p class="proj-desc">
+              Beginner-friendly OSS repo to help developers make their first
+              Hacktoberfest contribution. Guided issues, contribution templates
+              and onboarding resources included.
+            </p>
+            <div class="proj-footer">
+              <div class="stars-badge">
+                <i class="fas fa-star"></i>
+                <span class="star-count" data-repo="Adii0906/hacktoberfest-kickstarter">—</span>
+              </div>
+              <a href="https://github.com/Adii0906/hacktoberfest-kickstarter" target="_blank" class="proj-link">
+                GitHub <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- PROJECT: OpenSourceHub -->
+          <article class="proj-card">
+            <div class="proj-top">
+              <div class="proj-icon"><i class="fas fa-share-alt"></i></div>
+              <div class="proj-tags">
+                <span class="ptag">OSS</span>
+                <span class="ptag">Platform</span>
+              </div>
+            </div>
+            <h3 class="proj-title">OpenSource Hub</h3>
+            <p class="proj-desc">
+              Platform connecting contributors with projects that match their
+              skills. Aggregates beginner-friendly issues, trending repos,
+              and contribution pathways.
+            </p>
+            <div class="proj-footer">
+              <div class="stars-badge">
+                <i class="fas fa-star"></i>
+                <span class="star-count" data-repo="Adii0906/OpenSourceHub">—</span>
+              </div>
+              <a href="https://github.com/Adii0906/OpenSourceHub" target="_blank" class="proj-link">
+                GitHub <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- ✦ ADD NEW OSS PROJECT HERE ✦ -->
+
+        </div>
+      </div>
+
+
+      <!-- ── SIDE / FUN PROJECTS ────────────── -->
+      <div class="proj-group reveal" id="side-projects">
+        <div class="group-label"><i class="fas fa-flask"></i> Side Projects</div>
+        <div class="proj-grid">
+
+          <!-- PROJECT: Dev Confessions -->
+          <article class="proj-card">
+            <div class="proj-top">
+              <div class="proj-icon"><i class="fas fa-comment-dots"></i></div>
+              <div class="proj-tags">
+                <span class="ptag">Community</span>
+                <span class="ptag">Fun</span>
+              </div>
+            </div>
+            <h3 class="proj-title">Dev Confessions</h3>
+            <p class="proj-desc">
+              Anonymous community platform where developers share their deepest,
+              darkest coding confessions. Because everyone has pushed to main
+              on a Friday and lived to tell the tale.
+            </p>
+            <div class="proj-footer">
+              <div class="stars-badge">
+                <i class="fas fa-star"></i>
+                <span class="star-count" data-repo="Adii0906/dev.confession">—</span>
+              </div>
+              <a href="https://github.com/Adii0906/dev.confession" target="_blank" class="proj-link">
+                GitHub <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- PROJECT: Typing Master CLI -->
+          <article class="proj-card">
+            <div class="proj-top">
+              <div class="proj-icon"><i class="fas fa-keyboard"></i></div>
+              <div class="proj-tags">
+                <span class="ptag">CLI</span>
+                <span class="ptag">Python</span>
+                <span class="ptag">Fun</span>
+              </div>
+            </div>
+            <h3 class="proj-title">Typing Master CLI</h3>
+            <p class="proj-desc">
+              Terminal-based typing speed test with WPM tracking, accuracy metrics
+              and multiple difficulty modes. For devs who never want to leave
+              the terminal.
+            </p>
+            <div class="proj-footer">
+              <div class="stars-badge">
+                <i class="fas fa-star"></i>
+                <span class="star-count" data-repo="Adii0906/typing-master-cli">—</span>
+              </div>
+              <a href="https://github.com/Adii0906/typing-master-cli" target="_blank" class="proj-link">
+                GitHub <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- ✦ ADD NEW SIDE PROJECT HERE ✦ -->
+
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- Skills Section -->
-  <section id="skills" class="section skills-section">
-    <div class="section-container">
-      <div class="section-header">
-        <span class="section-number">03</span>
-        <h2 class="section-title">Tech Stack</h2>
+
+  <!-- ═══════════════════════════════════════
+       SKILLS SECTION
+  ═══════════════════════════════════════ -->
+  <section id="skills" class="section">
+    <div class="section-inner">
+
+      <div class="sec-head reveal">
+        <span class="sec-num">03</span>
+        <h2 class="sec-title">Tech Stack</h2>
+        <div class="sec-line"></div>
       </div>
 
-      <div class="skills-grid">
-        <!-- AI & ML -->
-        <div class="skill-category">
-          <div class="category-header">
+      <div class="skills-layout reveal">
+
+        <div class="skill-card">
+          <div class="skill-head">
             <i class="fas fa-brain"></i>
             <h3>AI & Machine Learning</h3>
           </div>
-          <div class="skill-list">
-            <span class="skill-badge">LangChain</span>
-            <span class="skill-badge">LLMs (GPT, Claude)</span>
-            <span class="skill-badge">RAG Systems</span>
-            <span class="skill-badge">Vector Databases</span>
-            <span class="skill-badge">Agents</span>
-            <span class="skill-badge">NLP</span>
+          <div class="badges">
+            <span class="badge">LangChain</span>
+            <span class="badge">LLMs (GPT, Claude)</span>
+            <span class="badge">RAG Systems</span>
+            <span class="badge">Vector DBs</span>
+            <span class="badge">AI Agents</span>
+            <span class="badge">NLP</span>
+            <span class="badge">Ollama</span>
+            <span class="badge">PyTorch</span>
+            <span class="badge">Scikit-learn</span>
+            <span class="badge">Pandas</span>
+            <span class="badge">NumPy</span>
+            <span class="badge">Matplotlib</span>
           </div>
         </div>
 
-        <!-- Backend -->
-        <div class="skill-category">
-          <div class="category-header">
+        <div class="skill-card">
+          <div class="skill-head">
             <i class="fas fa-server"></i>
             <h3>Backend Development</h3>
           </div>
-          <div class="skill-list">
-            <span class="skill-badge">Python</span>
-            <span class="skill-badge">FastAPI</span>
-            <span class="skill-badge">Django</span>
-            <span class="skill-badge">Flask</span>
-            <span class="skill-badge">MySQL</span>
-            <span class="skill-badge">MongoDB</span>
+          <div class="badges">
+            <span class="badge">Python</span>
+            <span class="badge">FastAPI</span>
+            <span class="badge">Django</span>
+            <span class="badge">Flask</span>
+            <span class="badge">MySQL</span>
+            <span class="badge">MongoDB</span>
+            <span class="badge">REST APIs</span>
           </div>
         </div>
 
-        <!-- Frontend -->
-        <div class="skill-category">
-          <div class="category-header">
+        <div class="skill-card">
+          <div class="skill-head">
             <i class="fas fa-laptop-code"></i>
             <h3>Frontend Development</h3>
           </div>
-          <div class="skill-list">
-            <span class="skill-badge">React</span>
-            <span class="skill-badge">JavaScript</span>
-            <span class="skill-badge">HTML5 & CSS3</span>
-            <span class="skill-badge">Tailwind CSS</span>
-            <span class="skill-badge">Streamlit</span>
+          <div class="badges">
+            <span class="badge">React</span>
+            <span class="badge">JavaScript</span>
+            <span class="badge">HTML5 & CSS3</span>
+            <span class="badge">Tailwind CSS</span>
+            <span class="badge">Streamlit</span>
           </div>
         </div>
 
-        <!-- DevOps -->
-        <div class="skill-category">
-          <div class="category-header">
+        <div class="skill-card">
+          <div class="skill-head">
             <i class="fas fa-tools"></i>
             <h3>DevOps & Tools</h3>
           </div>
-          <div class="skill-list">
-            <span class="skill-badge">Docker</span>
-            <span class="skill-badge">Git & GitHub</span>
-            <span class="skill-badge">Linux</span>
-            <span class="skill-badge">CI/CD</span>
-            <span class="skill-badge">API Development</span>
+          <div class="badges">
+            <span class="badge">Docker</span>
+            <span class="badge">Git & GitHub</span>
+            <span class="badge">Linux</span>
+            <span class="badge">CI/CD</span>
+            <span class="badge">Chrome Extensions</span>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="section contact-section">
-    <div class="section-container">
-      <div class="section-header">
-        <span class="section-number">04</span>
-        <h2 class="section-title">Get In Touch</h2>
+
+  <!-- ═══════════════════════════════════════
+       CONTACT SECTION
+  ═══════════════════════════════════════ -->
+  <section id="contact" class="section alt-bg">
+    <div class="section-inner">
+
+      <div class="sec-head reveal">
+        <span class="sec-num">04</span>
+        <h2 class="sec-title">Get In Touch</h2>
+        <div class="sec-line"></div>
       </div>
 
-      <div class="contact-content">
+      <div class="contact-wrap reveal">
         <p class="contact-text">
-          I'm always interested in hearing about new projects and opportunities.
-          Whether you have a question or just want to say hi, feel free to reach out!
+          Always open to new opportunities, collabs, and interesting conversations.
+          Drop me a message — I'll get back faster than a cold cache hit.
         </p>
-
-        <div class="contact-links">
-          <a href="https://github.com/yourusername" target="_blank" class="contact-link">
-            <i class="fab fa-github"></i>
-            <span>GitHub</span>
+        <div class="contact-grid">
+          <a href="https://github.com/Adii0906" target="_blank" class="clink">
+            <i class="fab fa-github"></i><span>GitHub</span>
           </a>
-          <a href="https://linkedin.com/in/yourusername" target="_blank" class="contact-link">
-            <i class="fab fa-linkedin"></i>
-            <span>LinkedIn</span>
+          <a href="https://linkedin.com/in/yourusername" target="_blank" class="clink">
+            <i class="fab fa-linkedin"></i><span>LinkedIn</span>
           </a>
-          <a href="mailto:your.email@example.com" class="contact-link">
-            <i class="fas fa-envelope"></i>
-            <span>Email</span>
+          <a href="mailto:your.email@example.com" class="clink">
+            <i class="fas fa-envelope"></i><span>Email</span>
           </a>
-          <a href="https://twitter.com/yourusername" target="_blank" class="contact-link">
-            <i class="fab fa-twitter"></i>
-            <span>Twitter</span>
+          <a href="https://twitter.com/yourusername" target="_blank" class="clink">
+            <i class="fab fa-twitter"></i><span>Twitter</span>
           </a>
         </div>
       </div>
+
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-content">
-      <p>Designed & Built by Aditya</p>
-      <p class="footer-year">© 2026</p>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <span class="bracket">&lt;</span>ADITYA<span class="bracket">/&gt;</span>
+      </div>
+      <p class="footer-copy">Designed & built by <strong>Aditya</strong> · © 2026</p>
+      <p class="footer-note">// made with caffeine & curiosity</p>
     </div>
   </footer>
 
   <script src="script.js"></script>
 </body>
-
 </html>

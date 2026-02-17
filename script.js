@@ -1,302 +1,153 @@
-// ===========================
-// TYPING EFFECT
-// ===========================
+/* ═══════════════════════════════════════════
+   script.js — Aditya's Portfolio
+   Clean, minimal, no cursor effects
+═══════════════════════════════════════════ */
 
-const phrases = [
+
+// ── TYPING EFFECT ──────────────────────────
+// Edit this array to change the typed phrases
+const PHRASES = [
   "AI Developer",
-  "Open-Source Contributor",
   "LLM Engineer",
+  "Open-Source Contributor",
   "Full Stack Developer",
-  "Backend Specialist"
+  "Machine Learning Enthusiast"
 ];
 
-let phraseIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-const typingElement = document.getElementById("typing-text");
+const typedEl = document.getElementById('typed');
+let pIdx = 0, cIdx = 0, deleting = false;
 
-function typeEffect() {
-  const currentPhrase = phrases[phraseIndex];
+function typeLoop() {
+  const phrase = PHRASES[pIdx];
 
-  if (isDeleting) {
-    typingElement.textContent = currentPhrase.substring(0, charIndex - 1);
-    charIndex--;
-  } else {
-    typingElement.textContent = currentPhrase.substring(0, charIndex + 1);
-    charIndex++;
+  typedEl.textContent = deleting
+    ? phrase.slice(0, --cIdx)
+    : phrase.slice(0, ++cIdx);
+
+  let delay = deleting ? 40 : 90;
+
+  if (!deleting && cIdx === phrase.length) {
+    delay = 2000; // pause at end
+    deleting = true;
+  } else if (deleting && cIdx === 0) {
+    deleting = false;
+    pIdx = (pIdx + 1) % PHRASES.length;
+    delay = 400;
   }
 
-  let typeSpeed = isDeleting ? 50 : 100;
-
-  if (!isDeleting && charIndex === currentPhrase.length) {
-    typeSpeed = 2000; // Pause at end of phrase
-    isDeleting = true;
-  } else if (isDeleting && charIndex === 0) {
-    isDeleting = false;
-    phraseIndex = (phraseIndex + 1) % phrases.length;
-    typeSpeed = 500; // Pause before next phrase
-  }
-
-  setTimeout(typeEffect, typeSpeed);
+  setTimeout(typeLoop, delay);
 }
 
-// Start typing effect when page loads
-document.addEventListener('DOMContentLoaded', () => {
-  typeEffect();
-});
+typeLoop();
 
-// ===========================
-// NAVBAR SCROLL EFFECT
-// ===========================
 
-const navbar = document.querySelector('.navbar');
-let lastScroll = 0;
+// ── NAVBAR SCROLL ──────────────────────────
+const navbar = document.getElementById('navbar');
 
 window.addEventListener('scroll', () => {
-  const currentScroll = window.pageYOffset;
+  navbar.classList.toggle('scrolled', window.scrollY > 70);
+  updateActiveNav();
+}, { passive: true });
 
-  if (currentScroll > 100) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
 
-  lastScroll = currentScroll;
-});
-
-// ===========================
-// SMOOTH SCROLL FOR NAVIGATION
-// ===========================
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
+// ── SMOOTH SCROLL ─────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
     e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-
+    const target = document.querySelector(link.getAttribute('href'));
     if (target) {
-      const offsetTop = target.offsetTop - 80;
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      });
-
-      // Update active nav link
-      document.querySelectorAll('.nav-link').forEach(link => {
-        link.classList.remove('active');
-      });
-      this.classList.add('active');
+      window.scrollTo({ top: target.offsetTop - 76, behavior: 'smooth' });
     }
   });
 });
 
-// ===========================
-// INTERSECTION OBSERVER FOR SCROLL ANIMATIONS
-// ===========================
 
-const observerOptions = {
-  threshold: 0.15,
-  rootMargin: '0px 0px -100px 0px'
-};
+// ── ACTIVE NAV HIGHLIGHT ───────────────────
+function updateActiveNav() {
+  const scrollY = window.scrollY;
+  document.querySelectorAll('section[id]').forEach(sec => {
+    const top    = sec.offsetTop - 160;
+    const bottom = top + sec.offsetHeight;
+    if (scrollY >= top && scrollY < bottom) {
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === `#${sec.id}`);
+      });
+    }
+  });
+}
 
-const observer = new IntersectionObserver((entries) => {
+
+// ── SCROLL REVEAL ──────────────────────────
+const revealObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      entry.target.classList.add('active');
-
-      // Add stagger animation to children if they exist
-      const children = entry.target.querySelectorAll('.work-card, .skill-category, .highlight-item');
-      children.forEach((child, index) => {
-        setTimeout(() => {
-          child.style.opacity = '0';
-          child.style.transform = 'translateY(30px)';
-          child.style.transition = 'all 0.6s ease';
-
-          setTimeout(() => {
-            child.style.opacity = '1';
-            child.style.transform = 'translateY(0)';
-          }, 50);
-        }, index * 100);
-      });
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
     }
   });
-}, observerOptions);
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 
-// Observe all sections with reveal class
-document.querySelectorAll('.section').forEach(section => {
-  section.classList.add('reveal');
-  observer.observe(section);
-});
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-// ===========================
-// ACTIVE NAV LINK ON SCROLL
-// ===========================
 
-const sections = document.querySelectorAll('section[id]');
+// ── STAGGER CHILD CARDS ON REVEAL ──────────
+const staggerObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
 
-function updateActiveNav() {
-  const scrollY = window.pageYOffset;
+    const cards = entry.target.querySelectorAll(
+      '.proj-card, .skill-card, .hl-card, .edu-card'
+    );
 
-  sections.forEach(section => {
-    const sectionHeight = section.offsetHeight;
-    const sectionTop = section.offsetTop - 150;
-    const sectionId = section.getAttribute('id');
+    cards.forEach((card, i) => {
+      card.style.opacity   = '0';
+      card.style.transform = 'translateY(20px)';
 
-    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-      document.querySelectorAll('.nav-link').forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${sectionId}`) {
-          link.classList.add('active');
-        }
-      });
-    }
+      setTimeout(() => {
+        card.style.transition = 'opacity 0.45s ease, transform 0.45s ease, border-color 0.25s, box-shadow 0.25s';
+        card.style.opacity    = '1';
+        card.style.transform  = 'translateY(0)';
+      }, i * 75 + 30);
+    });
+
+    staggerObserver.unobserve(entry.target);
   });
-}
+}, { threshold: 0.08 });
 
-window.addEventListener('scroll', updateActiveNav);
+document.querySelectorAll('.proj-group, .skills-layout, .highlights, .about-grid')
+  .forEach(el => staggerObserver.observe(el));
 
-// ===========================
-// TECH STACK ANIMATION
-// ===========================
 
-const techItems = document.querySelectorAll('.tech-item');
+// ── GITHUB STAR COUNTS ─────────────────────
+// Fetches live star counts from GitHub API for each project card.
+// Each card with class .star-count needs: data-repo="username/repo-name"
 
-techItems.forEach((item, index) => {
-  item.style.opacity = '0';
-  item.style.transform = 'translateY(20px)';
-
-  setTimeout(() => {
-    item.style.transition = 'all 0.5s ease';
-    item.style.opacity = '1';
-    item.style.transform = 'translateY(0)';
-  }, 1000 + (index * 100));
-});
-
-// ===========================
-// CURSOR TRAIL EFFECT (Optional Enhancement)
-// ===========================
-
-const canvas = document.createElement('canvas');
-const ctx = canvas.getContext('2d');
-canvas.style.position = 'fixed';
-canvas.style.top = '0';
-canvas.style.left = '0';
-canvas.style.pointerEvents = 'none';
-canvas.style.zIndex = '9999';
-document.body.appendChild(canvas);
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-const particles = [];
-const maxParticles = 20;
-
-class Particle {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-    this.size = Math.random() * 3 + 1;
-    this.speedX = Math.random() * 2 - 1;
-    this.speedY = Math.random() * 2 - 1;
-    this.life = 30;
-  }
-
-  update() {
-    this.x += this.speedX;
-    this.y += this.speedY;
-    this.life--;
-    this.size *= 0.96;
-  }
-
-  draw() {
-    ctx.fillStyle = `rgba(0, 255, 136, ${this.life / 30})`;
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fill();
+async function fetchStarCount(el) {
+  const repo = el.dataset.repo;
+  if (!repo) return;
+  try {
+    const res  = await fetch(`https://api.github.com/repos/${repo}`);
+    if (!res.ok) { el.textContent = '0'; return; }
+    const data = await res.json();
+    el.textContent = (data.stargazers_count ?? 0).toLocaleString();
+  } catch {
+    el.textContent = '0';
   }
 }
 
-let mouseX = 0;
-let mouseY = 0;
-let lastMouseX = 0;
-let lastMouseY = 0;
-
-document.addEventListener('mousemove', (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-
-  const distance = Math.hypot(mouseX - lastMouseX, mouseY - lastMouseY);
-
-  if (distance > 10 && particles.length < maxParticles) {
-    particles.push(new Particle(mouseX, mouseY));
-  }
-
-  lastMouseX = mouseX;
-  lastMouseY = mouseY;
+// Stagger fetches to avoid hitting rate limit
+document.querySelectorAll('.star-count[data-repo]').forEach((el, i) => {
+  setTimeout(() => fetchStarCount(el), i * 120);
 });
 
-function animateParticles() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  for (let i = particles.length - 1; i >= 0; i--) {
-    particles[i].update();
-    particles[i].draw();
-
-    if (particles[i].life <= 0) {
-      particles.splice(i, 1);
-    }
-  }
-
-  requestAnimationFrame(animateParticles);
-}
-
-animateParticles();
-
-window.addEventListener('resize', () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-});
-
-// ===========================
-// PRELOAD ANIMATIONS
-// ===========================
-
+// ── PAGE LOAD POLISH ───────────────────────
 window.addEventListener('load', () => {
-  document.body.classList.add('loaded');
-
-  // Trigger initial animations
-  setTimeout(() => {
-    const heroElements = document.querySelectorAll('.greeting, .hero-name, .hero-title, .hero-description, .hero-cta, .tech-stack');
-    heroElements.forEach((el, index) => {
-      el.style.animationDelay = `${index * 0.2}s`;
-    });
-  }, 100);
+  document.body.style.opacity = '1';
 });
 
-// ===========================
-// PERFORMANCE OPTIMIZATION
-// ===========================
-
-let ticking = false;
-
-function requestTick(callback) {
-  if (!ticking) {
-    requestAnimationFrame(() => {
-      callback();
-      ticking = false;
-    });
-    ticking = true;
-  }
-}
-
-// Debounce resize events
-let resizeTimeout;
-window.addEventListener('resize', () => {
-  clearTimeout(resizeTimeout);
-  resizeTimeout = setTimeout(() => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }, 250);
-});
-
-console.log('%c Portfolio Loaded Successfully! ', 'background: #00ff88; color: #0a0e17; font-size: 16px; font-weight: bold; padding: 10px;');
-console.log('%c Built with ❤️ by Aditya ', 'color: #00ff88; font-size: 14px;');
+console.log(
+  '%c  < ADITYA />  ',
+  'background:#00a86b;color:#fff;font-size:14px;font-weight:bold;padding:8px 16px;border-radius:4px'
+);
+console.log('%c Portfolio loaded. Built with JetBrains Mono & curiosity.', 'color:#00a86b;font-size:12px');
