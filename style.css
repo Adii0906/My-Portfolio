@@ -705,6 +705,14 @@ body::before {
   color: var(--green);
 }
 
+.group-desc {
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.6;
+  margin-bottom: 24px;
+  max-width: 600px;
+}
+
 .proj-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
