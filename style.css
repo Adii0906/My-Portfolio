@@ -35,6 +35,27 @@
   /* Misc */
   --radius: 10px;
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --nav-bg: rgba(245, 247, 252, 0.88);
+}
+
+:root[data-theme='dark'] {
+  --bg: #0b0f1a;
+  --bg2: #111827;
+  --bg3: #1e293b;
+
+  --card: #161e2e;
+  --card-hov: #1d2639;
+
+  --text: #f8fafc;
+  --text2: #cbd5e1;
+  --text3: #64748b;
+
+  --border: rgba(248, 250, 252, 0.08);
+  --border2: rgba(248, 250, 252, 0.12);
+
+  --green-lt: rgba(0, 168, 107, 0.12);
+  --blue-lt: rgba(37, 99, 235, 0.12);
+  --nav-bg: rgba(11, 15, 26, 0.88);
 }
 
 /* ── RESET ────────────────────────────────── */
@@ -57,6 +78,7 @@ body {
   color: var(--text);
   line-height: 1.6;
   overflow-x: hidden;
+  transition: background 0.3s var(--ease), color 0.3s var(--ease);
 }
 
 /* subtle grid texture */
@@ -81,7 +103,7 @@ body::before {
   width: 100%;
   z-index: 200;
   padding: 16px 0;
-  background: rgba(245, 247, 252, 0.88);
+  background: var(--nav-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
@@ -172,6 +194,33 @@ body::before {
   background: #009460 !important;
   transform: translateY(-1px);
   box-shadow: 0 6px 18px var(--green-glow) !important;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: all 0.25s var(--ease);
+}
+
+.theme-toggle:hover {
+  background: var(--green-lt);
+  border-color: var(--green);
+  color: var(--green);
+  transform: translateY(-1px);
+}
+
+[data-theme='dark'] .theme-toggle i::before {
+  content: "\f185"; /* sun icon fa-sun */
 }
 
 

@@ -18,6 +18,15 @@
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css" />
+
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      if (savedTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
 </head>
 
 <body>
@@ -38,6 +47,9 @@
         <a href="#skills">~/skills</a>
         <a href="#hire-me">~/hire</a>
         <a href="#contact">~/contact</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+          <i class="fas fa-moon"></i>
+        </button>
         <a href="https://mail.google.com/mail/?view=cm&fs=1&to=adityagond1035@gmail.com" target="_blank"
           class="hire-btn">
           hire me
@@ -678,7 +690,7 @@
               Let's build something amazing together!
             </p>
             <div class="hire-actions">
-              <a href="resume.pdf" class="btn-primary hire-action-btn" download>
+              <a href="Aditya_Resume.pdf" class="btn-primary hire-action-btn" download>
                 <i class="fas fa-file-download"></i> Download Resume
               </a>
               <a href="https://mail.google.com/mail/?view=cm&fs=1&to=adityagond1035@gmail.com" target="_blank"
@@ -722,7 +734,7 @@
             class="clink">
             <i class="fas fa-envelope"></i><span>Email</span>
           </a>
-          <a href="resume.pdf" class="clink" download>
+          <a href="Aditya_Resume.pdf" class="clink" download>
             <i class="fas fa-file-alt"></i><span>Resume</span>
           </a>
           <a href="https://x.com/Xnonymous_0?t=JnkfgfTWVLZ-fycIYQL89g&s=08" target="_blank" class="clink">

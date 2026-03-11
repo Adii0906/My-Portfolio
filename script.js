@@ -151,3 +151,14 @@ console.log(
   'background:#00a86b;color:#fff;font-size:14px;font-weight:bold;padding:8px 16px;border-radius:4px'
 );
 console.log('%c Portfolio loaded. Built with JetBrains Mono & curiosity.', 'color:#00a86b;font-size:12px');
+
+// ── THEME TOGGLE ───────────────────────────
+const themeToggle = document.getElementById('theme-toggle');
+
+themeToggle.addEventListener('click', () => {
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const newTheme = isDark ? 'light' : 'dark';
+  
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+});
