@@ -31,7 +31,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Syne:wght@400;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Syne:wght@400;600;700;800&display=swap"
     rel="stylesheet">
 
   <!-- Icons -->
@@ -112,7 +112,7 @@
         </div>
 
         <!-- Clap / appreciation button (near the name so it's seen) -->
-        <button id="clap-btn" class="clap-btn pulse" aria-label="Clap for this portfolio"
+        <button id="clap-btn" class="clap-btn" aria-label="Clap for this portfolio"
           title="Enjoyed it? Give a clap!">
           <span class="clap-emoji"><i class="fas fa-hands-clapping"></i></span>
           <span class="clap-label">Show some love</span>
@@ -179,7 +179,7 @@
         <!-- Left: bio + education + open source -->
         <div>
           <p class="about-intro">
-            I'm an <strong>AI-focused developer</strong> i love building
+            I'm an <strong>AI-focused developer</strong> who loves building
             intelligent systems that solve real-world problems.
           </p>
           <p class="about-p">
@@ -193,8 +193,8 @@
           </p>
           <div class="fun-stack">
             <span class="fun-item">Learning → Documenting → Building → Shipping</span>
-            <p class="fun-desc">Building projects useful ones… and sometimes boring ones that magically become useful
-              later)</p>
+            <p class="fun-desc">Building useful projects — and sometimes “boring” ones that quietly turn out to matter
+              later.</p>
           </div>
 
           <!-- Education -->
@@ -299,59 +299,87 @@
         <p class="group-desc">Intelligent systems using LLMs, RAG pipelines, and agentic workflows to solve complex
           automation problems.</p>
 
-        <!-- ★ FEATURED PROJECT: ML Agent ─────────────── -->
+        <!-- ★ FEATURED PROJECT: SnapShop ─────────────── -->
         <article class="proj-featured">
           <span class="featured-ribbon"><i class="fas fa-thumbtack"></i> Featured</span>
           <div class="pf-grid">
             <div class="pf-main">
               <div class="pf-head">
-                <div class="pf-icon"><i class="fas fa-robot"></i></div>
+                <div class="pf-icon"><i class="fas fa-store"></i></div>
                 <div>
-                  <h3 class="pf-title">ML Agent</h3>
-                  <div class="pf-sub">Autonomous end-to-end machine learning agent</div>
+                  <h3 class="pf-title">SnapShop</h3>
+                  <div class="pf-sub">Turn a shop pamphlet into an editable online storefront</div>
                 </div>
               </div>
 
               <p class="pf-desc">
-                <strong>The problem:</strong> building an ML model means juggling data prep, model
-                selection, training and evaluation — slow, repetitive, and easy to get wrong.
-                <br />
-                <strong>What it does:</strong> ML Agent uses agentic reasoning to drive the whole
-                workflow autonomously — it inspects your dataset, picks a strategy, trains and
-                evaluates candidate models, and explains its decisions end to end.
+                SnapShop turns a photo of a shop pamphlet into a live, editable storefront —
+                OCR extracts products and offers, the seller reviews and edits the results,
+                and the storefront ships on a reusable template.
               </p>
 
               <div class="pf-tags">
                 <span class="ptag">Python</span>
-                <span class="ptag">AI Agents</span>
-                <span class="ptag">Machine Learning</span>
-                <span class="ptag">Automation</span>
+                <span class="ptag">FastAPI</span>
+                <span class="ptag">Next.js</span>
+                <span class="ptag">PaddleOCR</span>
+                <span class="ptag">LLMs</span>
+                <span class="ptag">SQLite</span>
+                <span class="ptag">Tailwind CSS</span>
               </div>
 
               <div class="pf-footer">
                 <div class="stars-badge">
                   <i class="fas fa-star"></i>
-                  <span class="star-count" data-repo="Adii0906/ml-agent">—</span>
+                  <span class="star-count" data-repo="Adii0906/SnapShop">—</span>
                 </div>
                 <div class="pf-links">
-                  <!-- Add your deployed demo URL when live, then remove the "disabled" class -->
-                  <a href="https://github.com/Adii0906/ml-agent" target="_blank" class="proj-link">
+                  <a href="https://github.com/Adii0906/SnapShop" target="_blank" class="proj-link">
                     GitHub <i class="fab fa-github"></i>
+                  </a>
+                  <a href="https://snap-shop-teal.vercel.app/" target="_blank" class="proj-link">
+                    Live Demo <i class="fas fa-arrow-up-right-from-square"></i>
                   </a>
                 </div>
               </div>
             </div>
 
             <ul class="pf-highlights">
-              <li><i class="fas fa-diagram-project"></i> Agentic reasoning plans each ML step</li>
-              <li><i class="fas fa-broom"></i> Automated data prep &amp; cleaning</li>
-              <li><i class="fas fa-sliders"></i> Smart model selection &amp; tuning</li>
-              <li><i class="fas fa-chart-column"></i> Evaluation with clear, explained results</li>
+              <li><i class="fas fa-file-import"></i> Pamphlet OCR &amp; product extraction</li>
+              <li><i class="fas fa-pen-to-square"></i> Seller review &amp; editing</li>
+              <li><i class="fas fa-tags"></i> Product &amp; offer management</li>
+              <li><i class="fas fa-layer-group"></i> Reusable storefront templates</li>
             </ul>
           </div>
         </article>
 
         <div class="proj-grid">
+
+          <!-- PROJECT: ML Agent -->
+          <article class="proj-card">
+            <div class="proj-top">
+              <div class="proj-icon"><i class="fas fa-robot"></i></div>
+              <div class="proj-tags">
+                <span class="ptag">Python</span>
+                <span class="ptag">AI Agents</span>
+                <span class="ptag">ML</span>
+              </div>
+            </div>
+            <h3 class="proj-title">ML Agent</h3>
+            <p class="proj-desc">
+              Autonomous end-to-end ML agent — inspects a dataset, picks a strategy,
+              trains and evaluates candidate models, and explains its decisions.
+            </p>
+            <div class="proj-footer">
+              <div class="stars-badge">
+                <i class="fas fa-star"></i>
+                <span class="star-count" data-repo="Adii0906/ml-agent">—</span>
+              </div>
+              <a href="https://github.com/Adii0906/ml-agent" target="_blank" class="proj-link">
+                GitHub <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </article>
 
           <!-- PROJECT: Local Agent CLI -->
           <article class="proj-card">
